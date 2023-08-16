@@ -3,37 +3,45 @@ import { fetchAllPlayers } from "../API";
 import { useNavigate } from "react-router-dom";
 import SinglePlayer from "./SinglePlayer";
 
-const AllPlayers = () => {
+export default function AllPlayers() {
     const [players, setPlayers] = useState([]);
     const [error, setError] = useState (null);
-    const navigate = useNavigate
+    const [searchParam, setSearchParam] = useState("");
+    const navigate = useNavigate();
 
 useEffect(()=> {
     async function getAllPlayers() {
         const APIResponse= await fetchAllPlayers();
-        if(APIResponse.success){
+        if (APIResponse.success) {
             setPlayers(APIResponse.data.players);
-            
-        }else{
+        } else {
             setError(APIResponse.error.message);
         }
         }
         getAllPlayers();
     }, []);
 
-    const playersToDisplay = players;
+    const playersToDisplay = searchParam ? players.filter((player) =>
+    player.name.toLowerCase().includes(searchParam)
+    )
+    : players;
     
-    return (
+    return(
         <>
-        {playersToDisplay.map((player) => {
-            return <h3 key= {player.id}>{player.name}
-             <button onClick={()=>navigate('/SinglePlayer')}>Details
-                </button></h3>;
-        
-        })}
-        
+        <label>
+            Search: {""}
+            <input type="text" placeholder="Search" onChange={(e) => setSearchParam(e.target.value.toLowerCase())}/>
+        </label>
+        {playersToDisplay.map((player)=>{
+            return <h3 key={player.id}>
+                <button onClick={()=>navigate`/SinglePlayer/${player.id}`}>Details</button>
+                {player.name}
+                </h3>
+        }
+        )}
         </>
-    );   
-};
+    )
+}
 
-export default AllPlayers;
+
+    

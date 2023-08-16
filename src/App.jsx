@@ -1,10 +1,9 @@
-import { useState } from 'react'
-import { fetchAllPlayers } from './API/index.js'
-import './App.css'
-import AllPlayers from './components/AllPlayers.jsx'
-import SinglePlayer from './components/SinglePlayer.jsx'
-import {Route,Routes} from "react-router-dom"
-import {useNavigate} from 'react-router-dom'
+import { useState } from 'react';
+import { fetchAllPlayers } from './API/index';
+import './App.css';
+import AllPlayers from './components/AllPlayers';
+import SinglePlayer from './components/SinglePlayer';
+import {Route, Routes} from "react-router-dom";
 
 function App() {
 
@@ -12,7 +11,8 @@ function App() {
     <>
      <Routes>
       <Route path='/' element={<AllPlayers/>}/>
-      <Route path='/:id' element={<SinglePlayer/>}/>
+      {/* <Route path='/:id' element={<SinglePlayer/>}/> changed path to: */}
+      <Route path='/SinglePlayer/:id' element={<SinglePlayer/>}/> 
      </Routes>
     </>
   )
