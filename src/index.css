@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color:white;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -46,9 +46,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color:white;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: #213547;
 }
 button:hover {
   border-color: #646cff;
@@ -80,4 +81,5 @@ img {
 /* added input styling */
 input {
   border-radius: 5px;
+  background-color:white;
 }
