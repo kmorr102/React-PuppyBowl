@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchAllPlayers } from "../API";
 import { useNavigate } from "react-router-dom";
 import SinglePlayer from "./SinglePlayer";
+import NewPlayerForm from "./NewPlayerForm";
 
 export default function AllPlayers() {
     const [players, setPlayers] = useState([]);
@@ -34,6 +35,7 @@ useEffect(()=> {
             <input type="text" placeholder="Search" onChange={(e) => setSearchParam(e.target.value.toLowerCase())}/>
         </label>
         </div>
+     
 
         {playersToDisplay.map((player) =>{
             return <h3 key= {player.id}>
