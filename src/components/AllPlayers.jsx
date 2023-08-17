@@ -26,22 +26,23 @@ useEffect(()=> {
     )
     : players;
     
-    return(
+    return (
         <>
+        <div>
         <label>
             Search: {""}
             <input type="text" placeholder="Search" onChange={(e) => setSearchParam(e.target.value.toLowerCase())}/>
         </label>
-        {playersToDisplay.map((player)=>{
-            return <h3 key={player.id}>
-                <button onClick={()=>navigate`/SinglePlayer/${player.id}`}>Details</button>
-                {player.name}
-                </h3>
-        }
-        )}
+        </div>
+
+        {playersToDisplay.map((player) =>{
+            return <h3 key= {player.id}>
+                <button onClick={() => navigate(`/SinglePlayer/${player.id}`)}> Details </button>
+            {player.name}</h3>;
+        })}
         </>
-    )
-}
+    );   
+};
 
 
     
